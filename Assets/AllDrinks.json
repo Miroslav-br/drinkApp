@@ -1,0 +1,148 @@
+{
+  "hotDrinks": [
+    {
+      "id": 1,
+      "name": "Cappuccino",
+      "image": "cappuccino-180.png",
+      "glassImage": "cappuccino-180.png"
+    },
+    {
+      "id": 2,
+      "name": "Hot-Chocolate",
+      "image": "choco-180.png",
+      "glassImage": "choco-180.png"
+    },
+    {
+      "id": 3,
+      "name": "Coffee-Milk",
+      "image": "coffeemilk-180.png",
+      "glassImage": "coffeemilk-180.png"
+    },
+    {
+      "id": 4,
+      "name": "Decaf",
+      "image": "decaf-180.png",
+      "glassImage": "decaf-180.png"
+    },
+    {
+      "id": 5,
+      "name": "Latte Machiato",
+      "image": "latte-machiato-180.png",
+      "glassImage": "latte-machiato-180.png"
+    },
+    {
+      "id": 6,
+      "name": "Espresso",
+      "image": "ristretto-180.png",
+      "glassImage": "ristretto-180.png"
+    },
+    {
+      "id": 7,
+      "name": "Tea",
+      "image": "tea-180.png",
+      "glassImage": "tea-180.png"
+    },
+    {
+      "id": 8,
+      "name": "Hot Water",
+      "image": "hot-water-180.png",
+      "glassImage": "hot-water-180.png"
+    }
+  ],
+  "coolDrinks": [
+    {
+      "id": 1,
+      "name": "Coca-Cola",
+      "image": "coca-cola.png",
+      "glassImage": "cocacola-glass.png"
+    },
+    {
+      "id": 2,
+      "name": "cocacola-zero",
+      "image": "cocacola-zero.png",
+      "glassImage": "coca-cola-zero-glass.png"
+    },
+    {
+      "id": 3,
+      "name": "7Up",
+      "image": "7up.png",
+      "glassImage": "7up-glass.png"
+    },
+    {
+      "id": 4,
+      "name": "Fanta",
+      "image": "fanta.png",
+      "glassImage": "fanta-glass.png"
+    },
+    {
+      "id": 5,
+      "name": "Pepsi",
+      "image": "pepsi.png",
+      "glassImage": "pepsi-glass.png"
+    },
+    {
+      "id": 6,
+      "name": "Sprite",
+      "image": "sprite.png",
+      "glassImage": "sprite-glass.png"
+    },
+    {
+      "id": 7,
+      "name": "Lemonade",
+      "image": "lemon.png",
+      "glassImage": "lemon-glass.png"
+    },
+    {
+      "id": 8,
+      "name": "Fresh Juice",
+      "image": "fresh-juice.png",
+      "glassImage": ""
+    }
+  ],
+  "freshJuices": [
+    {
+      "id": 1,
+      "name": "Blueberry",
+      "image": "blueberry.png",
+      "glassImage": "blueberry.png"
+    },
+    {
+      "id": 2,
+      "name": "Banana",
+      "image": "banana.png",
+      "glassImage": "banana.png"
+    },
+    {
+      "id": 3,
+      "name": "Fruit-mocktail",
+      "image": "fruit-mocktail.png",
+      "glassImage": "fruit-mocktail.png"
+    },
+    {
+      "id": 4,
+      "name": "Fruit-punch",
+      "image": "fruit-punch.png",
+      "glassImage": "fruit-punch.png"
+    },
+    {
+      "id": 5,
+      "name": "Tangy Orange",
+      "image": "orange.png",
+      "glassImage": "orange.png"
+    },
+    {
+      "id": 6,
+      "name": "Strawberry",
+      "image": "strawberry.png",
+      "glassImage": "strawberry.png"
+    },
+    {
+      "id": 7,
+      "name": "Lychee",
+      "image": "lychee.png",
+      "glassImage": "lychee.png"
+    }
+  ]
+
+}
+

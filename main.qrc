@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+    </qresource>
+
+    <qresource prefix="images/">
+        <file alias="cool">Assets/cool-drink.png</file>
+        <file alias="hot">Assets/hot-drink.png</file>
+        <file alias="cappuccino">Assets/cappuccino.png</file>
+        <file alias="backButton">Assets/back.png</file>
+    </qresource>
+</RCC>
