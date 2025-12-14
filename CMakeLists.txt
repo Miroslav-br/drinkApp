@@ -13,14 +13,22 @@ find_package(
   COMPONENTS
   REQUIRED Core Quick Widgets Gui)
 
-qt6_standard_project_setup(REQUIRES 6.8)
+qt_standard_project_setup(REQUIRES 6.8)
+
 add_subdirectory(App)
-add_subdirectory(Commons)
+add_subdirectory(Core)
 add_subdirectory(Components)
 
-qt6_add_executable(${PROJECT_NAME} main.qrc main.cpp)
+qt_add_executable(${PROJECT_NAME} main.qrc main.cpp)
 
-qt6_add_qml_module(${PROJECT_NAME} URI ${PROJECT_NAME}_QML QML_FILES main.qml)
+qt_add_qml_module(${PROJECT_NAME} URI ${PROJECT_NAME}_QML QML_FILES main.qml)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Qml Qt6::Core Qt6::Widgets
-                                              Commons Qt6::Gui Views)
+target_link_libraries(
+  ${PROJECT_NAME}
+  PRIVATE Qt6::Qml
+          Qt6::Core
+          Qt6::Widgets
+          Qt6::Gui
+          Views
+          Core
+          Components)

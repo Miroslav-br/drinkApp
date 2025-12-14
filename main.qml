@@ -1,9 +1,10 @@
 import QtQuick
 import QtQuick.Controls
-import Commons
+import Components
+import Core
 import App.Views
 
-Window {
+ApplicationWindow {
     id: root
     width: 1280
     height: 840
@@ -11,48 +12,28 @@ Window {
     color: Colors.primary
 
     Rectangle {
-        id: timeRect
-        anchors.top: parent.top
-        anchors.left: topLine.left
-        width: parent.width * 0.3
-        color: Colors.transparent
-        height: 48
-        Text {
-            id: timeRectText
-            anchors {
-                left: parent.left
-                verticalCenter: parent.verticalCenter
-            }
-            color: Colors.secondary
-            font.pixelSize: 24
-            text: Qt.formatDateTime(new Date(), "hh:mm:ss")
-            Timer {
-                interval: 1000
-                repeat: true
-                running: true
-                onTriggered: parent.text = Qt.formatDateTime(new Date(), "hh:mm:ss")
-            }
-        }
-    }
-
-    Rectangle {
         id: topLine
         width: parent.width * 0.95
         height: 1
         anchors {
             top: parent.top
-            topMargin: 40
+            topMargin: 20
             horizontalCenter: parent.horizontalCenter
         }
+    }
+    Component {
+        id: page
+        HotCoolSelectView {}
     }
 
     StackView {
         id: rootStack
-        anchors.fill: parent
-        objectName: "rootStack"
-        initialItem: DrinkSizeSelectionView {
-            stackParentView: rootStack
+        anchors {
+            top: topLine.bottom
+            bottom: bottomLine.top
         }
+        width: parent.width
+        initialItem: page
     }
 
     Rectangle {
@@ -60,9 +41,43 @@ Window {
         width: parent.width * 0.95
         height: 1
         anchors {
-            bottom: parent.bottom
-            bottomMargin: 20
+            bottom: bottomPanel.top
             horizontalCenter: parent.horizontalCenter
+        }
+    }
+
+    Rectangle {
+        id: bottomPanel
+        height: 48
+        width: parent.width
+        color: Colors.transparent
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            leftMargin: 50
+            rightMargin: 50
+        }
+
+        BackButton {
+            anchors {
+                left: parent.left
+            }
+            visible: rootStack.depth > 1
+            width: 100
+            height: parent.height
+            color: Colors.primary
+
+            onClicked: rootStack.pop()
+        }
+        BottomTimer {
+            anchors {
+                right: parent.right
+            }
+            width: parent.width * 0.3
+            color: Colors.transparent
+            height: parent.height
         }
     }
 }

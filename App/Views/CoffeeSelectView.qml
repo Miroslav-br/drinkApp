@@ -1,15 +1,17 @@
 import QtQuick
 import QtQuick.Layouts
-import Commons
 import QtQuick.Controls
-import Components.Items
+import Core
+import Components
 
 Rectangle {
-    id: coffeeSelectView
-    property StackView stackParentView: null
+    id: root
+
+    property var stack: StackView.view
 
     width: parent.width
     color: Colors.transparent
+
     anchors {
         top: parent.top
         bottom: parent.bottom
@@ -28,65 +30,19 @@ Rectangle {
             id: coffeeRepeater
             model: 8
 
-            Rectangle {
+            DrinkCustomItem {
                 color: Colors.transparent
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 radius: 10
 
-                Rectangle {
-                    width: parent.width
-                    height: parent.height
-                    color: Colors.transparent
-
-                    DrinkCustomItem {
-                        id: drinkCustomItem
-                        anchors.fill: parent
-                    }
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        id: backViewButton
-        width: 100
-        height: 40
-        color: Colors.primary
-
-        anchors {
-            left: parent.left
-            top: parent.bottom
-            leftMargin: 50
-        }
-
-        Image {
-            id: backViewButtonImage
-            source: "qrc:/images/backButton"
-            width: 30
-            height: 30
-
-            anchors {
-                left: parent.left
-                verticalCenter: parent.verticalCenter
+                onClicked: root.stack.push(sizeSelection)
             }
         }
 
-        Text {
-            text: "Back"
-            color: Colors.secondary
-            font.pixelSize: Font.sizeNormal
-
-            anchors {
-                left: backViewButtonImage.right
-                leftMargin: 5
-                verticalCenter: parent.verticalCenter
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: coffeeSelectView.stackParentView.pop()
+        Component {
+            id: sizeSelection
+            DrinkSizeSelectionView {}
         }
     }
 }

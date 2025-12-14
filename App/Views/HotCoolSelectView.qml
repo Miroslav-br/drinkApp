@@ -1,17 +1,16 @@
 import QtQuick
-import QtQuick.Controls 2.15
-import Commons
-import App.Views
+import QtQuick.Controls
+import Core
 
 Rectangle {
-    id: hotCoolSelectView
-    property StackView stackParentView: null
+    id: root
+
+    property var rootStack: StackView.view
 
     Component {
-        id: coffeeSelectViewComponent
-        CoffeeSelectView {
-            stackParentView: hotCoolSelectView.stackParentView
-        }
+        id: coffeeView
+
+        CoffeeSelectView {}
     }
 
     anchors {
@@ -20,6 +19,7 @@ Rectangle {
         topMargin: 30
         bottomMargin: 30
     }
+
     width: parent.width
     color: Colors.transparent
 
@@ -35,7 +35,6 @@ Rectangle {
 
         Image {
             id: coolImage
-            source: "qrc:/images/cool"
             anchors {
                 top: parent.top
                 topMargin: 50
@@ -44,6 +43,7 @@ Rectangle {
             width: parent.width
             fillMode: Image.PreserveAspectFit
             height: parent.height * 0.7
+            source: Resources.image("cool")
         }
 
         Text {
@@ -69,7 +69,7 @@ Rectangle {
 
         Image {
             id: hotImage
-            source: "qrc:/images/hot"
+            source: Resources.image("hot")
             anchors {
                 top: parent.top
                 topMargin: 50
@@ -93,7 +93,9 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: hotCoolSelectView.stackParentView.push(coffeeSelectViewComponent)
+            onClicked: {
+                root.rootStack.push(coffeeView);
+            }
         }
     }
 }

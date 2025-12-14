@@ -1,7 +1,9 @@
 import QtQuick
-import Commons
+import Core
 
-Item {
+Rectangle {
+    id: root
+    signal clicked
 
     Image {
         id: drinkItemImage
@@ -21,6 +23,11 @@ Item {
 
         color: Colors.secondary
         text: "cappuccino"
-        font.pixelSize: Font.sizeNormal
+        font.pixelSize: Fonts.sizeNormal
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: root.clicked()
     }
 }
