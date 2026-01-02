@@ -1,12 +1,20 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import App.Controllers
 import Core
 
 Rectangle {
     id: root
 
     readonly property var stack: StackView.view
+
+    Component {
+        id: confirmationScreen
+        ConfirmationScreen {}
+    }
 
     anchors {
         fill: parent
@@ -32,7 +40,7 @@ Rectangle {
             Image {
                 id: drinkImage
                 anchors.fill: parent
-                source: Resources.image("cappuccino")
+                source: Resources.image(SystemController.selectedDrink.glassImage)
                 fillMode: Image.PreserveAspectFit
             }
         }
@@ -118,6 +126,15 @@ Rectangle {
                         color: Colors.secondary
 
                         font.pointSize: Fonts.sizeNormal
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onPressed: parent.color = Qt.rgba(210, 210, 210, 0.5)
+                        onReleased: parent.color = delegateRoot.levelColor
+                        onClicked: {
+                            SystemController.sugarLevel = delegateRoot.index + 1;
+                            root.stack.push(confirmationScreen);
+                        }
                     }
                 }
             }

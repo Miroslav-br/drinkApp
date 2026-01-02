@@ -51,8 +51,8 @@ Rectangle {
                 radius: 10
 
                 onClicked: {
-                    root.stack.push(sizeSelection);
                     SystemController.setSelectedDrink(id, name, image, glassImage);
+                    root.stack.push(sizeSelection);
                 }
             }
         }

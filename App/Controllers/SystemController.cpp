@@ -36,6 +36,8 @@ void SystemController::setSelectedDrink(int id, const QString &name,
                                         const QString &galssImage) {
   Drink *drink = new Drink(id, name, image, galssImage, this);
   m_selectedDrink = drink;
+
+  qInfo() << image;
 }
 
 void SystemController::startPreparing() {

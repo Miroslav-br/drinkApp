@@ -1,12 +1,32 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import App.Controllers
 import Core
 
 Rectangle {
     id: root
 
     property var stack: StackView.view
+
+    Component {
+        id: sugarSelectionView
+        SugarSizeSelectionView {}
+    }
+
+    Component {
+        id: confirmationView
+
+        ConfirmationScreen {}
+    }
+
+    function onSizeSelect() {
+        if (SystemController.drinkTemperature === SystemController.HOT) {
+            stack.push(sugarSelectionView);
+        } else {
+            stack.push(confirmationView);
+        }
+    }
 
     anchors {
         top: parent.top
@@ -32,9 +52,9 @@ Rectangle {
 
             Image {
                 id: drinkSizeSelectionImage
-                source: Resources.image("cappucino")
+                source: Resources.image(SystemController.selectedDrink.glassImage)
                 anchors.fill: parent
-                fillMode: Image.Pad
+                fillMode: Image.PreserveAspectFit
             }
         }
 
@@ -104,6 +124,13 @@ Rectangle {
                                 leftMargin: 26
                             }
                         }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                SystemController.drinkSize = SystemController.LARGE;
+                                root.onSizeSelect();
+                            }
+                        }
                     }
                     Rectangle {
                         width: parent.width * 0.9
@@ -135,6 +162,13 @@ Rectangle {
                                 leftMargin: 26
                             }
                         }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                SystemController.drinkSize = SystemController.MEDIUM;
+                                root.onSizeSelect();
+                            }
+                        }
                     }
                     Rectangle {
                         width: parent.width * 0.9
@@ -164,6 +198,14 @@ Rectangle {
                                 verticalCenter: parent.verticalCenter
                                 left: parent.left
                                 leftMargin: 26
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                SystemController.drinkSize = SystemController.SMALL;
+                                root.onSizeSelect();
                             }
                         }
                     }

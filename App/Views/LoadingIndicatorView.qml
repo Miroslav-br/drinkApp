@@ -2,11 +2,21 @@ import QtQuick
 import QtQuick.Controls
 import Components
 import Core
+import App.Controllers
 
 Rectangle {
     id: root
 
     readonly property var stack: StackView.view
+
+    Component.onCompleted: {
+        SystemController.startPreparing();
+    }
+
+    Component {
+        id: finishedView
+        FinishedView {}
+    }
 
     anchors {
         fill: parent
@@ -32,6 +42,13 @@ Rectangle {
             top: loader.bottom
             topMargin: 30
             horizontalCenter: parent.horizontalCenter
+        }
+    }
+
+    Connections {
+        target: SystemController
+        function onDrinkPreparationFinished() {
+            root.stack.push(finishedView);
         }
     }
 }

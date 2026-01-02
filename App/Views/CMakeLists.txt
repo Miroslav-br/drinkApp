@@ -1,6 +1,11 @@
 set(QML_SOURCES
-    HotCoolSelectView.qml DrinkSelectView.qml DrinkSizeSelectionView.qml
-    SugarSizeSelectionView.qml ConfirmationScreen.qml LoadingIndicatorView.qml)
+    HotCoolSelectView.qml
+    DrinkSelectView.qml
+    DrinkSizeSelectionView.qml
+    SugarSizeSelectionView.qml
+    ConfirmationScreen.qml
+    LoadingIndicatorView.qml
+    FinishedView.qml)
 
 qt_add_qml_module(
   Views

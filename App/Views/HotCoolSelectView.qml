@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import App.Controllers
 import Core
 
 Rectangle {
@@ -68,6 +69,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                SystemController.drinkTemperature = SystemController.COOL;
+
                 root.rootStack.push(teaView);
             }
         }
@@ -110,6 +113,7 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 root.rootStack.push(coffeeView);
+                SystemController.drinkTemperature = SystemController.HOT;
             }
         }
     }

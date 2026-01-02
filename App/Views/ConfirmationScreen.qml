@@ -1,12 +1,18 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import App.Controllers
 import Core
 
 Rectangle {
     id: root
 
     readonly property var stack: StackView.view
+
+    Component {
+        id: preparingView
+        LoadingIndicatorView {}
+    }
 
     anchors {
         fill: parent
@@ -32,7 +38,7 @@ Rectangle {
             Image {
                 id: drinkImage
                 anchors.fill: parent
-                source: Resources.image("cappuccino")
+                source: Resources.image(SystemController.selectedDrink.glassImage)
                 fillMode: Image.PreserveAspectFit
             }
         }
@@ -48,7 +54,17 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: parent.height / 4 * 0.1
                 Text {
-                    text: "Hot Drink"
+                    text: {
+                        if (SystemController.drinkTemperature === SystemController.HOT) {
+                            return "Hot Drink";
+                        }
+                        if (SystemController.drinkTemperature === SystemController.COOL) {
+                            return "Cool Drink";
+                        }
+
+                        return "Fresh Juice";
+                    }
+
                     color: Colors.secondary
                     font.pixelSize: Fonts.sizeNormal * 1.9
                     width: confirmationContent.width
@@ -60,7 +76,7 @@ Rectangle {
                     color: Colors.secondary
                 }
                 Text {
-                    text: "cappuccino"
+                    text: SystemController.selectedDrink.name
                     color: Colors.secondary
                     font.pixelSize: Fonts.sizeNormal * 1.9
                     width: confirmationContent.width
@@ -72,7 +88,15 @@ Rectangle {
                     color: Colors.secondary
                 }
                 Text {
-                    text: "Medium Size"
+                    text: {
+                        if (SystemController.drinkSize === SystemController.SMALL) {
+                            return "Small Size";
+                        }
+                        if (SystemController.drinkSize === SystemController.MEDIUM) {
+                            return "Medium Size";
+                        }
+                        return "Large Size";
+                    }
                     color: Colors.secondary
                     font.pixelSize: Fonts.sizeNormal * 1.9
                     width: confirmationContent.width
@@ -107,6 +131,9 @@ Rectangle {
 
             MouseArea {
                 anchors.fill: parent
+                onClicked: {
+                    root.stack.push(preparingView);
+                }
             }
         }
     }

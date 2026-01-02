@@ -39,7 +39,7 @@
         <file alias="hot.png">Assets/hot-drink.png</file>
         <file alias="hot-water.png">Assets/hot-water.png</file>
         <file alias="hot-water-180.png">Assets/hot-water-180.png</file>
-        <file alias="icons8-check-100.png">Assets/icons8-check-100.png</file>
+        <file alias="finish">Assets/icons8-check-100.png</file>
         <file alias="jug-coffee-180.png">Assets/jug-coffee-180.png</file>
         <file alias="jug-ss-180.png">Assets/jug-ss-180.png</file>
         <file alias="latte-macchiato.png">Assets/latte-macchiato.png</file>
