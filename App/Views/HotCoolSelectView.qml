@@ -8,9 +8,18 @@ Rectangle {
     property var rootStack: StackView.view
 
     Component {
+        id: teaView
+
+        DrinkSelectView {
+            drinkType: "coolDrinks"
+        }
+    }
+    Component {
         id: coffeeView
 
-        CoffeeSelectView {}
+        DrinkSelectView {
+            drinkType: "hotDrinks"
+        }
     }
 
     anchors {
@@ -43,7 +52,7 @@ Rectangle {
             width: parent.width
             fillMode: Image.PreserveAspectFit
             height: parent.height * 0.7
-            source: Resources.image("cool")
+            source: Resources.image("cool.png")
         }
 
         Text {
@@ -55,6 +64,12 @@ Rectangle {
             }
             color: "#428dfe"
             font.pixelSize: 64
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                root.rootStack.push(teaView);
+            }
         }
     }
     Rectangle {
@@ -69,7 +84,7 @@ Rectangle {
 
         Image {
             id: hotImage
-            source: Resources.image("hot")
+            source: Resources.image("hot.png")
             anchors {
                 top: parent.top
                 topMargin: 50

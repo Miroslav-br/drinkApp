@@ -4,8 +4,11 @@ import Core
 Rectangle {
     id: root
 
+    required property int id
     required property string name
     required property string image
+    required property string glassImage
+
     signal clicked
 
     Image {

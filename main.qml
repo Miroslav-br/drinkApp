@@ -23,8 +23,7 @@ ApplicationWindow {
     }
     Component {
         id: page
-        // HotCoolSelectView {}
-        LoadingIndicatorView {}
+        HotCoolSelectView {}
     }
 
     StackView {
@@ -71,7 +70,7 @@ ApplicationWindow {
             color: Colors.primary
             text: "Back"
 
-            sourceImage: "back"
+            sourceImage: "back.png"
 
             onClicked: rootStack.pop()
         }
@@ -89,7 +88,7 @@ ApplicationWindow {
 
             reversed: true
 
-            sourceImage: "restart"
+            sourceImage: "restart.png"
 
             onClicked: rootStack.pop(null)
         }

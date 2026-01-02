@@ -10,7 +10,7 @@ int DrinkListModel::rowCount(const QModelIndex &parent) const {
 }
 
 QVariant DrinkListModel::data(const QModelIndex &index, int role) const {
-  if (index.isValid() || index.row() < 0 ||
+  if (!index.isValid() || index.row() < 0 ||
       index.row() >= m_drinkList.length()) {
     return QVariant();
   }
@@ -44,10 +44,11 @@ QHash<int, QByteArray> DrinkListModel::roleNames() const {
   return hash;
 };
 
-void DrinkListModel::loadFromJson(const QString &filePath) {
-  QFile file(filePath);
-  if (!file.open(QIODeviceBase::ReadOnly)) {
-    qWarning() << "File not open" << filePath;
+void DrinkListModel::loadFromJson() {
+  QFile file(":/json/AllDrinks");
+
+  if (!file.open(QIODevice::ReadOnly)) {
+    qWarning() << "JSON File not open";
   }
 
   QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
