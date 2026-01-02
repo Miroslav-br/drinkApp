@@ -23,7 +23,8 @@ ApplicationWindow {
     }
     Component {
         id: page
-        HotCoolSelectView {}
+        // HotCoolSelectView {}
+        LoadingIndicatorView {}
     }
 
     StackView {
@@ -60,7 +61,7 @@ ApplicationWindow {
             rightMargin: 50
         }
 
-        BackButton {
+        NavigationButton {
             anchors {
                 left: parent.left
             }
@@ -68,8 +69,29 @@ ApplicationWindow {
             width: 100
             height: parent.height
             color: Colors.primary
+            text: "Back"
+
+            sourceImage: "back"
 
             onClicked: rootStack.pop()
+        }
+        NavigationButton {
+            anchors {
+                verticalCenter: parent.verticalCenter
+                horizontalCenter: parent.horizontalCenter
+            }
+            visible: rootStack.depth > 2
+            width: 100
+            height: parent.height
+            color: Colors.primary
+
+            text: "Restart"
+
+            reversed: true
+
+            sourceImage: "restart"
+
+            onClicked: rootStack.pop(null)
         }
         BottomTimer {
             anchors {

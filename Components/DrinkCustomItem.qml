@@ -3,11 +3,14 @@ import Core
 
 Rectangle {
     id: root
+
+    required property string name
+    required property string image
     signal clicked
 
     Image {
         id: drinkItemImage
-        source: "qrc:/images/cappuccino"
+        source: Resources.image(root.image)
         anchors.centerIn: parent
         width: parent.width * 0.6
         height: parent.height * 0.6
@@ -22,7 +25,7 @@ Rectangle {
         }
 
         color: Colors.secondary
-        text: "cappuccino"
+        text: root.name
         font.pixelSize: Fonts.sizeNormal
     }
 

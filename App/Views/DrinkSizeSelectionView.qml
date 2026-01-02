@@ -11,8 +11,8 @@ Rectangle {
     anchors {
         top: parent.top
         bottom: parent.bottom
-        topMargin: 40
-        bottomMargin: 40
+        topMargin: 20
+        bottomMargin: 20
     }
 
     width: parent.width
@@ -32,7 +32,7 @@ Rectangle {
 
             Image {
                 id: drinkSizeSelectionImage
-                source: "qrc:/images/cappuccino"
+                source: Resources.image("cappucino")
                 anchors.fill: parent
                 fillMode: Image.Pad
             }
@@ -56,7 +56,7 @@ Rectangle {
                     bottomMargin: 20
                 }
 
-                radius: 5
+                radius: 20
                 color: "#404040"
 
                 Text {
@@ -70,7 +70,7 @@ Rectangle {
                         horizontalCenter: parent.horizontalCenter
                     }
 
-                    font.pointSize: Fonts.sizeNormal * 2
+                    font.pointSize: Fonts.sizeNormal * 1.5
                 }
 
                 Rectangle {
@@ -165,15 +165,6 @@ Rectangle {
                                 left: parent.left
                                 leftMargin: 26
                             }
-                        }
-                    }
-                    Rectangle {
-                        width: parent.width * 0.9
-                        height: 1
-
-                        anchors {
-                            top: smallSelector.bottom
-                            horizontalCenter: parent.horizontalCenter
                         }
                     }
                 }

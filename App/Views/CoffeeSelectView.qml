@@ -35,8 +35,14 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 radius: 10
+            }
 
-                onClicked: root.stack.push(sizeSelection)
+            onItemAdded: (index, item) => {
+                if (item instanceof DrinkCustomItem) {
+                    item.clicked.connect(() => {
+                        root.stack.push(sizeSelection);
+                    });
+                }
             }
         }
 
